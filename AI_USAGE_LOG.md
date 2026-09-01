@@ -1,8 +1,24 @@
 # AI Usage Log
 
-| Tanggal    | Tujuan Penggunaan AI                  | Prompt Ringkas                                                                           | Hasil                                                                                                           | Verifikasi                                           | Keputusan Mahasiswa                                      |
-| ---------- | ------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| 26-08-2026 | Memahami cara mencatat informasi HTTP | Cara mencatat Request URL, Request Method, Status Code, Content-Type, dan waktu response | Mendapatkan panduan menggunakan Network pada browser                                                            | Mengecek hasil langsung pada browser                 | Menggunakan data yang sesuai dengan hasil browser        |
-| 26-08-2026 | Memahami penggunaan Git               | Cara menjalankan git init, git status, git add, dan git commit                           | Mendapatkan panduan perintah Git dasar                                                                          | Mengecek hasil perintah melalui terminal dan git log | Menggunakan Git untuk membuat repository dan commit awal |
-| 26-08-2026 | Menghubungkan Git dengan GitHub       | Cara menambahkan remote dan melakukan git push                                           | Repository berhasil terhubung ke GitHub                                                                         | Mengecek git remote -v dan hasil git push            | Menggunakan GitHub sebagai repository remote             |
-| 26-08-2026 | Membuat dokumentasi proyek            | Cara membuat README.md untuk proyek                                                      | Mendapatkan struktur README yang berisi identitas, deskripsi, teknologi, cara menjalankan proyek, dan URL lokal | Mengecek isi README dan hasil push ke GitHub         | Menyesuaikan isi README dengan proyek                    |
+## Penggunaan AI
+
+AI digunakan sebagai alat bantu selama pengerjaan tugas OBE Pemrograman Web.
+
+Bantuan AI yang digunakan meliputi:
+
+1. Membantu memahami instruksi dan tahapan pengerjaan tugas.
+2. Membantu memahami konsep HTTP request dan response.
+3. Membantu membaca informasi pada Network tab seperti method, status, content type, ukuran, dan fungsi request.
+4. Membantu menyusun dokumentasi pada README.md.
+5. Membantu memahami penggunaan Laragon, Visual Studio Code, dan Git.
+6. Membantu menyusun refleksi mengenai HTTP, Git, dan etika penggunaan AI.
+
+## Batasan Penggunaan AI
+
+AI tidak digunakan untuk melakukan eksploitasi, pengujian keamanan, perubahan data, atau tindakan yang dapat mengganggu website yang dianalisis.
+
+Analisis Network dilakukan secara langsung oleh mahasiswa melalui browser dengan mengamati request dan response yang muncul ketika website diakses.
+
+## Verifikasi
+
+Informasi yang diberikan oleh AI diperiksa kembali dan disesuaikan dengan hasil pengamatan langsung pada browser dan lingkungan pengembangan lokal.

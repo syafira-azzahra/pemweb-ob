@@ -1,38 +1,39 @@
-# pemweb-ob
-# Praktikum Pemrograman Web
+# Project Pemrograman Web OBE
 
-## Identitas
+## Analisis Website Kementerian Sekretariat Negara
 
-Mata Kuliah: Pemrograman Web
-Nama: Syafira Az-Zahra
-NPM: 2440304013
-Semester: 5
+Project ini dibuat untuk memenuhi Tugas OBE Pemrograman Web.
 
-## Deskripsi Singkat Proyek
+Website yang dianalisis:
 
-Proyek ini merupakan tugas praktikum mata kuliah Pemrograman Web yang dibuat untuk mempraktikkan pembuatan dan pengelolaan proyek web menggunakan HTML serta Git dan GitHub.
+https://www.setneg.go.id/
 
-## Teknologi yang Digunakan
+## Tujuan
 
-* HTML5
-* Laragon 5
-* Apache
-* Git
-* GitHub
+Tugas ini bertujuan untuk memahami proses request dan response HTTP melalui pengamatan Network tab pada browser. Analisis dilakukan secara pasif tanpa mencoba mengubah, mengeksploitasi, atau mengganggu sistem website.
 
-## Cara Menjalankan Proyek melalui Laragon 5
+## Analisis HTTP Request
 
-1. Pastikan aplikasi Laragon 5 sudah terpasang dan dijalankan.
-2. Letakkan folder proyek `pemweb-ob` di dalam folder:
- `D:\Semester5\laragon\www\`
-3. Jalankan **Laragon 5**.
-4. Aktifkan web server **Apache** melalui Laragon.
-5. Buka browser.
-6. Masukkan URL lokal berikut:
- `http://localhost/pemweb-ob/`
-7. Halaman proyek akan ditampilkan pada browser.
+Analisis dilakukan menggunakan Network tab pada browser Google Chrome dengan mengamati request dan response yang terjadi ketika website diakses.
 
-## URL Lokal
-http://localhost/pemweb-ob/
+| No | Request | Method | Status | Content Type | Ukuran | Fungsi |
+|---|---|---|---|---|---|---|
+| 1 | www.setneg.go.id | GET | 200 OK | text/html | 18.2 KB | Mengambil halaman utama website |
+| 2 | site.min.css | GET | 200 OK | text/css | 27.9 KB | Memuat stylesheet untuk mengatur tampilan halaman |
+| 3 | jquery.js | GET | 200 OK | application/javascript | 91.5 KB | Menyediakan library JavaScript untuk fungsi interaktif halaman |
+| 4 | 440x220_5333WhatsApp...jpeg | GET | 200 OK | image/jpeg | 20.2 KB | Memuat gambar yang ditampilkan pada halaman website |
+| 5 | Roboto-Regular-webfont.woff | GET | 200 OK | font/woff | 25.020 bytes | Memuat font Roboto yang digunakan pada halaman |
 
-## Proyek Pemweb 
+## Kesimpulan
+
+Dari hasil pengamatan, satu halaman website dapat menghasilkan banyak request untuk mengambil berbagai jenis sumber daya, seperti HTML, CSS, JavaScript, gambar, dan font. Sebagian besar request yang diamati memiliki status 200 OK yang menunjukkan bahwa server berhasil memberikan resource yang diminta oleh browser.
+
+Analisis dilakukan hanya dengan mengamati request dan response melalui Network tab dan tidak melakukan perubahan atau gangguan terhadap sistem website.
+
+## Tools
+
+- Google Chrome DevTools
+- Network Tab
+- Visual Studio Code
+- Laragon
+- Git
