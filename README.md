@@ -1,5 +1,4 @@
 # Project Pemrograman Web OBE
-
 ## Analisis Website Kementerian Sekretariat Negara
 
 Project ini dibuat untuk memenuhi Tugas OBE Pemrograman Web.
@@ -9,11 +8,9 @@ Website yang dianalisis:
 https://www.setneg.go.id/
 
 ## Tujuan
-
 Tugas ini bertujuan untuk memahami proses request dan response HTTP melalui pengamatan Network tab pada browser. Analisis dilakukan secara pasif tanpa mencoba mengubah, mengeksploitasi, atau mengganggu sistem website.
 
 ## Analisis HTTP Request
-
 Analisis dilakukan menggunakan Network tab pada browser Google Chrome dengan mengamati request dan response yang terjadi ketika website diakses.
 
 | No | Request | Method | Status | Content Type | Ukuran | Fungsi |
@@ -25,13 +22,11 @@ Analisis dilakukan menggunakan Network tab pada browser Google Chrome dengan men
 | 5 | Roboto-Regular-webfont.woff | GET | 200 OK | font/woff | 25.020 bytes | Memuat font Roboto yang digunakan pada halaman |
 
 ## Kesimpulan
-
 Dari hasil pengamatan, satu halaman website dapat menghasilkan banyak request untuk mengambil berbagai jenis sumber daya, seperti HTML, CSS, JavaScript, gambar, dan font. Sebagian besar request yang diamati memiliki status 200 OK yang menunjukkan bahwa server berhasil memberikan resource yang diminta oleh browser.
 
 Analisis dilakukan hanya dengan mengamati request dan response melalui Network tab dan tidak melakukan perubahan atau gangguan terhadap sistem website.
 
 ## Tools
-
 - Google Chrome DevTools
 - Network Tab
 - Visual Studio Code
