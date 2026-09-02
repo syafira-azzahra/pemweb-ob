@@ -3,24 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemweb OBE</title>
+    <title>Pemweb OBE - Analisis Kemensetneg</title>
 </head>
 <body>
-    <h1>Project Pemrograman Web OBE</h1>
-    <h2>Analisis Website Kementerian Sekretariat Negara</h2>
-    <p>
-        Project ini dibuat untuk memenuhi Tugas OBE
-        Pemrograman Web.
-    </p>
-    <p>
-        Website yang dianalisis:
-        <strong>https://www.setneg.go.id/</strong>
-    </p>
-    <h3>Analisis HTTP Request</h3>
-    <p>
-        Analisis dilakukan menggunakan Network tab pada browser
-        dengan mengamati request dan response yang terjadi saat
-        website diakses.
-    </p>
+
+    <!-- 1 & 2. HEADER & NAV (Syarat Soal #2) -->
+    <header>
+        <!-- Link Aksesibilitas (Syarat Soal #6) -->
+        <a href="#main-content">Lewati ke konten utama</a>
+        
+        <!-- 3. HIRARKI HEADING (1 buah <h1>) (Syarat Soal #3) -->
+        <h1>Project Pemrograman Web OBE</h1>
+        
+        <nav aria-label="Navigasi Utama">
+            <ul>
+                <li><a href="#analisis">Analisis HTTP</a></li>
+                <li><a href="#galeri">Galeri Gambar</a></li>
+                <li><a href="#kontak">Form Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. MAIN CONTAINER (Syarat Soal #2) -->
+    <main id="main-content">
+
+        <!-- SECTION 1: Analisis Teks Kamu (Syarat Soal #2 & #3) -->
+        <section id="analisis">
+            <h2>Analisis Website Kementerian Sekretariat Negara</h2>
+            <p>
+                Project ini dibuat untuk memenuhi Tugas OBE
+                Pemrograman Web.
+            </p>
+            <p>
+                Website yang dianalisis:
+                <strong>https://www.setneg.go.id/</strong>
+            </p>
+
+            <article>
+                <h3>Analisis HTTP Request</h3>
+                <p>
+                    Analisis dilakukan menggunakan Network tab pada browser
+                    dengan mengamati request dan response yang terjadi saat
+                    website diakses.
+                </p>
+            </article>
+        </section>
+
+        <!-- SECTION 2: 5 Gambar dengan Alt Text (Syarat Soal #2, #3, & #4) -->
+        <section id="galeri">
+            <h2>Dokumentasi & Galeri Gambar</h2>
+
+            <!-- 2 Gambar Informatif (alt menjelaskan fungsi/konten) -->
+            <figure>
+                <img src="https://via.placeholder.com/400x200" alt="Grafik hasil analisis status code HTTP pada website Kemensetneg">
+                <figcaption>Gambar Informatif 1: Grafik HTTP</figcaption>
+            </figure>
+
+            <figure>
+                <img src="https://via.placeholder.com/400x200" alt="Tampilan antarmuka DevTools tab Network saat menguji request dokumen HTML">
+                <figcaption>Gambar Informatif 2: DevTools Network</figcaption>
+            </figure>
+
+            <!-- 2 Gambar Dekoratif (alt="") -->
+            <div>
+                <img src="https://via.placeholder.com/100x20" alt="">
+                <img src="https://via.placeholder.com/100x20" alt="">
+            </div>
+
+            <!-- 1 Gambar Link (alt menerangkan tujuan link) -->
+            <p>Kunjungi situs resmi:</p>
+            <a href="https://www.setneg.go.id/" target="_blank">
+                <img src="https://via.placeholder.com/150x50" alt="Buka situs resmi Kementerian Sekretariat Negara di tab baru">
+            </a>
+        </section>
+
+        <!-- SECTION 3: Form Kontak dengan Label (Syarat Soal #2, #3, & #5) -->
+        <section id="kontak">
+            <h2>Formulir Tanggapan Analisis</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="nama">Nama Pengirim:</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+                <br>
+                <div>
+                    <label for="email">Email Pengirim:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <br>
+                <div>
+                    <label for="pesan">Catatan Analisis:</label>
+                    <textarea id="pesan" name="pesan" rows="4"></textarea>
+                </div>
+                <br>
+                <button type="submit">Kirim Tanggapan</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- 2. FOOTER (Syarat Soal #2) -->
+    <footer>
+        <p>&copy; 2026 Teknik Komputer UBT - Pemrograman Web OBE</p>
+    </footer>
+
 </body>
 </html>
