@@ -1,110 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemweb OBE - Analisis Kemensetneg</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SiJaga Tambak - Sistem monitoring kesehatan tambak udang-bandeng berbasis web">
+    <title>SiJaga Tambak - Monitoring Kesehatan Tambak</title>
 </head>
 <body>
 
-    <!-- 1 & 2. HEADER & NAV (Syarat Soal #2) -->
     <header>
-        <!-- Link Aksesibilitas (Syarat Soal #6) -->
-        <a href="#main-content">Lewati ke konten utama</a>
-        
-        <!-- 3. HIRARKI HEADING (1 buah <h1>) (Syarat Soal #3) -->
-        <h1>Project Pemrograman Web OBE</h1>
-        
-        <nav aria-label="Navigasi Utama">
-            <ul>
-                <li><a href="#analisis">Analisis HTTP</a></li>
-                <li><a href="#galeri">Galeri Gambar</a></li>
-                <li><a href="#kontak">Form Kontak</a></li>
-            </ul>
+    <a href="#main">Lewati ke konten utama</a>
+    <h1>SiJaga Tambak</h1>
+    <nav aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#cara-kerja">Cara Kerja</a>
+        <a href="#kontak">Kontak</a>
         </nav>
     </header>
 
-    <!-- 2. MAIN CONTAINER (Syarat Soal #2) -->
-    <main id="main-content">
+    <main id="main">
 
-        <!-- SECTION 1: Analisis Teks Kamu (Syarat Soal #2 & #3) -->
-        <section id="analisis">
-            <h2>Analisis Website Kementerian Sekretariat Negara</h2>
-            <p>
-                Project ini dibuat untuk memenuhi Tugas OBE
-                Pemrograman Web.
-            </p>
-            <p>
-                Website yang dianalisis:
-                <strong>https://www.setneg.go.id/</strong>
-            </p>
+    <section id="tentang">
+        <h2>Tentang SiJaga Tambak</h2>
+        <p>
+            SiJaga Tambak adalah sistem monitoring kesehatan tambak udang dan bandeng
+            berbasis web, yang membantu penjaga tambak dan pemilik tambak memantau
+            kondisi kolam melalui pencatatan konsumsi pakan harian.
+        </p>
+    </section>
 
-            <article>
-                <h3>Analisis HTTP Request</h3>
-                <p>
-                    Analisis dilakukan menggunakan Network tab pada browser
-                    dengan mengamati request dan response yang terjadi saat
-                    website diakses.
-                </p>
-            </article>
-        </section>
+    <section id="fitur">
+        <h2>Fitur Utama</h2>
 
-        <!-- SECTION 2: 5 Gambar dengan Alt Text (Syarat Soal #2, #3, & #4) -->
-        <section id="galeri">
-            <h2>Dokumentasi & Galeri Gambar</h2>
+        <article>
+        <h3>Deteksi Dini Penyakit</h3>
+        <p>
+            Sistem menghitung persentase pakan yang dimakan setiap hari.
+            Jika terjadi penurunan signifikan dibanding hari-hari sebelumnya,
+            sistem akan mengirim notifikasi peringatan kepada pemilik tambak,
+            sehingga penanganan bisa dilakukan lebih cepat.
+        </p>
+        <img src="grafik-pakan.png"
+            alt="Grafik tren konsumsi pakan 7 hari terakhir menunjukkan penurunan dari 95% menjadi 70% sejak hari Senin">
+        </article>
+    </section>
 
-            <!-- 2 Gambar Informatif (alt menjelaskan fungsi/konten) -->
-            <figure>
-                <img src="https://via.placeholder.com/400x200" alt="Grafik hasil analisis status code HTTP pada website Kemensetneg">
-                <figcaption>Gambar Informatif 1: Grafik HTTP</figcaption>
-            </figure>
+    <section id="cara-kerja">
+        <h2>Cara Kerja</h2>
+        <ol>
+            <li>Penjaga tambak mencatat jumlah pakan yang diberikan setiap hari.</li>
+            <li>Penjaga tambak mencatat sisa pakan yang tidak dimakan.</li>
+            <li>Sistem menghitung otomatis persentase pakan yang dimakan.</li>
+            <li>Sistem membandingkan dengan rata-rata hari-hari sebelumnya.</li>
+            <li>Jika terjadi penurunan signifikan, sistem mengirim notifikasi ke pemilik tambak.</li>
+        </ol>
+    </section>
 
-            <figure>
-                <img src="https://via.placeholder.com/400x200" alt="Tampilan antarmuka DevTools tab Network saat menguji request dokumen HTML">
-                <figcaption>Gambar Informatif 2: DevTools Network</figcaption>
-            </figure>
+    <section id="kontak">
+        <h2>Kontak &amp; Masukan</h2>
+        <form>
+            <label for="nama">Nama</label>
+            <input id="nama" name="nama" type="text" required>
 
-            <!-- 2 Gambar Dekoratif (alt="") -->
-            <div>
-                <img src="https://via.placeholder.com/100x20" alt="">
-                <img src="https://via.placeholder.com/100x20" alt="">
-            </div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
 
-            <!-- 1 Gambar Link (alt menerangkan tujuan link) -->
-            <p>Kunjungi situs resmi:</p>
-            <a href="https://www.setneg.go.id/" target="_blank">
-                <img src="https://via.placeholder.com/150x50" alt="Buka situs resmi Kementerian Sekretariat Negara di tab baru">
-            </a>
-        </section>
+        <label for="pesan">Pesan atau Masukan</label>
+        <textarea id="pesan" name="pesan" rows="4" required></textarea>
 
-        <!-- SECTION 3: Form Kontak dengan Label (Syarat Soal #2, #3, & #5) -->
-        <section id="kontak">
-            <h2>Formulir Tanggapan Analisis</h2>
-            <form action="#" method="post">
-                <div>
-                    <label for="nama">Nama Pengirim:</label>
-                    <input type="text" id="nama" name="nama" required>
-                </div>
-                <br>
-                <div>
-                    <label for="email">Email Pengirim:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <br>
-                <div>
-                    <label for="pesan">Catatan Analisis:</label>
-                    <textarea id="pesan" name="pesan" rows="4"></textarea>
-                </div>
-                <br>
-                <button type="submit">Kirim Tanggapan</button>
-            </form>
-        </section>
+        <button type="submit">Kirim</button>
+        </form>
+    </section>
 
     </main>
 
-    <!-- 2. FOOTER (Syarat Soal #2) -->
     <footer>
-        <p>&copy; 2026 Teknik Komputer UBT - Pemrograman Web OBE</p>
+    <p>&copy; 2026 SiJaga Tambak</p>
+    <p>
+        Hubungi kami lewat
+        <a href="https://wa.me/62812xxxxxxx">WhatsApp Penjaga Tambak</a>
+    </p>
     </footer>
 
 </body>
