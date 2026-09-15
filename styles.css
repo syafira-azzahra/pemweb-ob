@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --brand: #157E96;
+  --brand-dark: #0048A0;
+  --brand-light: #4DA898;
+  --accent: #6AC88A;
+  --surface: #ffffff;
+  --background: #f4f6f0;
+  --text: #1c1c1c;
+  --warning: #ffb703;
+  --danger: #e63946;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* Font diganti ke Poppins agar lebih modern dan menarik */
+  font-family: 'Poppins', system-ui, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+/* ============================================
+    HEADER & NAVIGASI
+   ============================================ */
+header {
+  background: linear-gradient(135deg, #157E96, #0048A0);
+  color: white;
+  padding: var(--space-2) var(--space-3);
+}
+
+header h1 {
+  margin: 0 0 var(--space-2) 0;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* ============================================
+    HERO SECTION — full width, foto background
+   ============================================ */
+.hero {
+  width: 100%;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+
+  /* Overlay digelapkan sedikit agar teks putih makin kontras */
+  background-image:
+    linear-gradient(rgba(0, 20, 50, 0.75), rgba(0, 20, 50, 0.75)),
+    url('bg-tambak.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-text {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+  padding: var(--space-4);
+}
+
+/* Perbaikan agar teks tidak nyaru */
+.hero-text h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #ffffff !important; /* Memaksa warna putih */
+  margin-top: 0;
+  margin-bottom: var(--space-1);
+  line-height: 1.2;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Tambahan bayangan agar teks pop-out */
+}
+
+.hero-text p {
+  max-width: 40rem;
+  font-size: 1.15rem;
+  color: #ffffff;
+  font-weight: 300;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================
+    CARD / RINGKASAN FITUR
+   ============================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-2);
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(135deg, #6AC88A, #107AA3) 1;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sedikit bayangan pada card */
+}
+
+.card h3 {
+  color: var(--brand);
+  margin-top: 0;
+  font-weight: 600;
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+    SECTION UMUM (di dalam main, ada max-width)
+   ============================================ */
+main {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+section {
+  padding: var(--space-4) 0;
+}
+
+section h2 {
+  color: var(--brand-dark);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  position: relative;
+}
+
+/* Garis bawah pemanis untuk judul section */
+section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: var(--brand-light);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+/* ============================================
+    FORM
+   ============================================ */
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: var(--space-2);
+  margin-bottom: 0.3rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  background-color: #fafafa;
+}
+
+button {
+  margin-top: var(--space-3);
+  background: linear-gradient(135deg, #4DA898, #0B74AD);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(11, 116, 173, 0.3);
+}
+
+/* ============================================
+    FOCUS STATE (Untuk Aksesibilitas)
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brand-dark);
+  outline-offset: 3px;
+}
+
+header a[href="#main"] {
+  position: absolute;
+  left: -999px;
+  background: white;
+  color: var(--brand-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+header a[href="#main"]:focus-visible {
+  left: var(--space-2);
+  top: var(--space-2);
+  z-index: 100;
+}
+
+/* ============================================
+    FOOTER
+   ============================================ */
+footer {
+  background: linear-gradient(135deg, #0f596a, #00326e);
+  color: white;
+  text-align: center;
+  padding: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+footer a {
+  color: var(--accent);
+  font-weight: 600;
+}
