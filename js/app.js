@@ -1,8 +1,7 @@
-// ==========================================
-// PRAKTIKUM MODUL 4: PEMROGRAMAN WEB
-// ==========================================
+// js/app.js
+// Panggil rumus dari utils.js di baris paling atas
+import { ringkasInventaris, cariAlatById } from './utils.js';
 
-// 2. Buat array objek inventaris dengan properti id, nama, kategori, jumlah, kondisi
 const inventaris = [
     { id: 1, nama: 'Kincir Air (Paddle Wheel)', kategori: 'Mesin', jumlah: 4, kondisi: 'Baik' },
     { id: 2, nama: 'Sensor Suhu & pH', kategori: 'IoT', jumlah: 2, kondisi: 'Rusak' },
@@ -10,31 +9,47 @@ const inventaris = [
     { id: 4, nama: 'Jaring Panen', kategori: 'Alat Tangkap', jumlah: 10, kondisi: 'Baik' }
 ];
 
-console.log("=== DATA INVENTARIS TAMBAK ===");
+console.log("=== PRAKTIKUM MODUL 4 ===");
 console.table(inventaris);
 
-// 3. Gunakan filter untuk mengambil alat kondisi “Baik”
+// 3. Filter
 const alatBaik = inventaris.filter(item => item.kondisi === 'Baik');
-console.log("\n3. Alat dengan kondisi Baik (Filter):");
-console.table(alatBaik);
+console.log("\nAlat kondisi Baik (Filter):", alatBaik);
 
-// 4. Gunakan map untuk menghasilkan array nama alat
+// 4. Map
 const namaAlat = inventaris.map(item => item.nama);
-console.log("\n4. Daftar Nama Alat (Map):", namaAlat);
+console.log("Daftar Nama Alat (Map):", namaAlat);
 
-// 5. Gunakan reduce untuk menghitung total jumlah alat
+// 5. Reduce
 const totalJumlahAlat = inventaris.reduce((total, item) => total + item.jumlah, 0);
-console.log(`\n5. Total Keseluruhan Jumlah Alat (Reduce): ${totalJumlahAlat} unit`);
+console.log(`Total Keseluruhan Jumlah Alat (Reduce): ${totalJumlahAlat} unit`);
 
-// 6. Buat fungsi ringkasInventaris(data) yang mengembalikan object statistik
-function ringkasInventaris(data) {
-    return {
-        totalJenisAlat: data.length,
-        totalUnitKeseluruhan: data.reduce((total, item) => total + item.jumlah, 0),
-        jumlahAlatRusak: data.filter(item => item.kondisi !== 'Baik').length
-    };
+// 6 & 7. Hasil Fungsi dari utils.js
+console.log("\nHasil Fungsi ringkasInventaris():");
+console.log(ringkasInventaris(inventaris));
+
+
+console.log("\n=== LATIHAN TERBIMBING ===");
+
+// Latihan 1: Map + Filter
+const inventarisDenganLokasi = inventaris.map(item => ({
+    ...item,
+    lokasi: item.kategori === 'Mesin' ? 'Gudang Utama' : 'Gudang Alat'
+}));
+const itemDiLokasi = inventarisDenganLokasi.filter(item => item.lokasi === 'Gudang Utama');
+console.log("Latihan 1 - Alat di Gudang Utama:", itemDiLokasi);
+
+// Latihan 2: Find dari utils.js
+try {
+    const alatId2 = cariAlatById(inventaris, 2);
+    console.log("Latihan 2 - Pencarian ID 2 Berhasil:", alatId2);
+} catch (error) {
+    console.error(error.message);
 }
 
-// 7. Tampilkan hasil sementara di Console
-console.log("\n6 & 7. Hasil Fungsi ringkasInventaris():");
-console.log(ringkasInventaris(inventaris));
+// Latihan 3: Destructuring & Template Literal
+console.log("\nLatihan 3 - Ringkasan:");
+inventaris.forEach(item => {
+    const { nama, kategori, jumlah, kondisi } = item;
+    console.log(`- [${kategori}] ${nama}: Tersedia ${jumlah} unit (Kondisi: ${kondisi}).`);
+});

@@ -1,17 +1,17 @@
 // js/utils.js
 
-// Fungsi menghitung persentase pakan menggunakan ES6 Arrow Function
-export const hitungKonsumsi = (pakanDiberikan, pakanSisa) => {
-    // Error Handling: Validasi logika pakan (Slide 13)
-    if (pakanSisa > pakanDiberikan) {
-        throw new Error('Data tidak valid: Sisa pakan tidak mungkin lebih besar dari yang diberikan!');
-    }
+export function ringkasInventaris(data) {
+    if (!Array.isArray(data)) throw new TypeError('Data harus array');
     
-    const pakanDimakan = pakanDiberikan - pakanSisa;
-    return (pakanDimakan / pakanDiberikan) * 100;
-};
+    return {
+        totalJenisAlat: data.length,
+        totalUnitKeseluruhan: data.reduce((total, item) => total + item.jumlah, 0),
+        jumlahAlatRusak: data.filter(item => item.kondisi !== 'Baik').length
+    };
+}
 
-// Fungsi memformat peringatan menggunakan Destructuring & Template Literal (Slide 11)
-export const formatPeringatan = ({ tanggal, status }) => {
-    return `Perhatian untuk tanggal ${tanggal}: Status kolam saat ini "${status}". Segera periksa kondisi air atau udang.`;
-};
+export function cariAlatById(data, idDicari) {
+    const hasil = data.find(item => item.id === idDicari);
+    if (!hasil) throw new Error(`Alat dengan ID ${idDicari} tidak ditemukan!`);
+    return hasil;
+}
