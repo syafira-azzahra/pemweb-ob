@@ -1,55 +1,33 @@
-// js/app.js
-// Panggil rumus dari utils.js di baris paling atas
-import { ringkasInventaris, cariAlatById } from './utils.js';
+import { hitungKonsumsiPakan, ringkasDataTambak } from './utils.js';
 
-const inventaris = [
-    { id: 1, nama: 'Kincir Air (Paddle Wheel)', kategori: 'Mesin', jumlah: 4, kondisi: 'Baik' },
-    { id: 2, nama: 'Sensor Suhu & pH', kategori: 'IoT', jumlah: 2, kondisi: 'Rusak' },
-    { id: 3, nama: 'Pompa Air Submersible', kategori: 'Mesin', jumlah: 1, kondisi: 'Baik' },
-    { id: 4, nama: 'Jaring Panen', kategori: 'Alat Tangkap', jumlah: 10, kondisi: 'Baik' }
+const dataTambak = [
+    { id: 1, tanggal: '2026-10-01', pakanDiberikan: 50, pakanSisa: 2, status: 'Normal' },
+    { id: 2, tanggal: '2026-10-02', pakanDiberikan: 50, pakanSisa: 5, status: 'Normal' },
+    { id: 3, tanggal: '2026-10-03', pakanDiberikan: 50, pakanSisa: 25, status: 'Waspada' },
+    { id: 4, tanggal: '2026-10-04', pakanDiberikan: 50, pakanSisa: 1, status: 'Normal' }
 ];
 
-console.log("=== PRAKTIKUM MODUL 4 ===");
-console.table(inventaris);
+console.log("=== SISTEM MONITORING SIJAGA TAMBAK ===");
 
-// 3. Filter
-const alatBaik = inventaris.filter(item => item.kondisi === 'Baik');
-console.log("\nAlat kondisi Baik (Filter):", alatBaik);
-
-// 4. Map
-const namaAlat = inventaris.map(item => item.nama);
-console.log("Daftar Nama Alat (Map):", namaAlat);
-
-// 5. Reduce
-const totalJumlahAlat = inventaris.reduce((total, item) => total + item.jumlah, 0);
-console.log(`Total Keseluruhan Jumlah Alat (Reduce): ${totalJumlahAlat} unit`);
-
-// 6 & 7. Hasil Fungsi dari utils.js
-console.log("\nHasil Fungsi ringkasInventaris():");
-console.log(ringkasInventaris(inventaris));
-
-
-console.log("\n=== LATIHAN TERBIMBING ===");
-
-// Latihan 1: Map + Filter
-const inventarisDenganLokasi = inventaris.map(item => ({
-    ...item,
-    lokasi: item.kategori === 'Mesin' ? 'Gudang Utama' : 'Gudang Alat'
-}));
-const itemDiLokasi = inventarisDenganLokasi.filter(item => item.lokasi === 'Gudang Utama');
-console.log("Latihan 1 - Alat di Gudang Utama:", itemDiLokasi);
-
-// Latihan 2: Find dari utils.js
 try {
-    const alatId2 = cariAlatById(inventaris, 2);
-    console.log("Latihan 2 - Pencarian ID 2 Berhasil:", alatId2);
-} catch (error) {
-    console.error(error.message);
-}
+    const analisisHarian = dataTambak.map(hari => {
+        const { tanggal, pakanDiberikan, pakanSisa, status } = hari;
+        const persentase = hitungKonsumsiPakan(pakanDiberikan, pakanSisa);
+        
+        return `Tgl ${tanggal}: Konsumsi ${persentase}% | Status: ${status}`;
+    });
+    console.log("Analisis Konsumsi Harian:", analisisHarian);
 
-// Latihan 3: Destructuring & Template Literal
-console.log("\nLatihan 3 - Ringkasan:");
-inventaris.forEach(item => {
-    const { nama, kategori, jumlah, kondisi } = item;
-    console.log(`- [${kategori}] ${nama}: Tersedia ${jumlah} unit (Kondisi: ${kondisi}).`);
-});
+    const daftarWaspada = dataTambak.filter(hari => hari.status === 'Waspada');
+    console.log("\nHari Waspada (Indikasi Penurunan Nafsu Makan):", daftarWaspada);
+
+    const idDicari = 3;
+    const dataSpesifik = dataTambak.find(hari => hari.id === idDicari);
+    console.log(`\nPencarian Data ID ${idDicari}:`, dataSpesifik);
+
+    console.log("\nRingkasan Total Bulan Ini:");
+    console.log(ringkasDataTambak(dataTambak));
+
+} catch (error) {
+    console.error("Terjadi Kesalahan Sistem:", error.message);
+}

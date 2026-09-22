@@ -1,17 +1,19 @@
-// js/utils.js
+export const hitungKonsumsiPakan = (diberikan, sisa) => {
+    if (typeof diberikan !== 'number' || typeof sisa !== 'number') {
+        throw new TypeError('Error: Data pakan harus berupa angka.');
+    }
+    if (sisa > diberikan || sisa < 0) {
+        throw new Error('Error Edge Case: Sisa pakan tidak valid (lebih besar dari yang diberikan atau negatif).');
+    }
+    return ((diberikan - sisa) / diberikan) * 100;
+};
 
-export function ringkasInventaris(data) {
-    if (!Array.isArray(data)) throw new TypeError('Data harus array');
+export const ringkasDataTambak = (data) => {
+    if (!Array.isArray(data)) throw new TypeError('Error: Data harus berupa array object.');
     
     return {
-        totalJenisAlat: data.length,
-        totalUnitKeseluruhan: data.reduce((total, item) => total + item.jumlah, 0),
-        jumlahAlatRusak: data.filter(item => item.kondisi !== 'Baik').length
+        totalPencatatan: data.length,
+        totalPakanKg: data.reduce((sum, item) => sum + item.pakanDiberikan, 0),
+        hariWaspada: data.filter(item => item.status !== 'Normal').length
     };
-}
-
-export function cariAlatById(data, idDicari) {
-    const hasil = data.find(item => item.id === idDicari);
-    if (!hasil) throw new Error(`Alat dengan ID ${idDicari} tidak ditemukan!`);
-    return hasil;
-}
+};
