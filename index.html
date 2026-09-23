@@ -15,12 +15,12 @@
     <nav aria-label="Navigasi utama">
         <a href="#tentang">Tentang</a>
         <a href="#fitur">Fitur</a>
+        <a href="#pemantauan">Pemantauan</a>
         <a href="#cara-kerja">Cara Kerja</a>
         <a href="#kontak">Kontak</a>
         </nav>
     </header>
 
-    <!-- Hero di luar wrapper max-width, biar foto background bisa full lebar layar -->
     <section class="hero">
         <div class="hero-text">
             <h2>Pantau Kesehatan Tambak Lebih Dini</h2>
@@ -41,7 +41,6 @@
 
     <section id="fitur">
         <h2>Fitur Utama</h2>
-
         <article>
         <h3>Deteksi Dini Penyakit</h3>
         <p>
@@ -50,8 +49,31 @@
             sistem akan mengirim notifikasi peringatan kepada pemilik tambak,
             sehingga penanganan bisa dilakukan lebih cepat.
         </p>
-            alt="Grafik tren konsumsi pakan 7 hari terakhir menunjukkan penurunan dari 95% menjadi 70% sejak hari Senin">
         </article>
+    </section>
+
+    <section id="pemantauan">
+        <h2>Data Pemantauan Harian</h2>
+        
+        <div class="toolbar" aria-label="Filter Data Tambak" style="margin-bottom: 1rem; padding: 1rem; background: #f4f4f4; border-radius: 5px;">
+            <label for="search">Cari Status/Tanggal:</label>
+            <input id="search" type="search" placeholder="Ketik 'Waspada' atau tanggal...">
+
+            <label for="limit" style="margin-left: 1rem;">Tampilkan:</label>
+            <select id="limit">
+                <option value="2">2 Hari</option>
+                <option value="4">4 Hari</option>
+                <option value="6">6 Hari</option>
+            </select>
+        </div>
+
+        <div id="detail-area" style="display: none; margin-bottom: 1rem; padding: 1rem; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px;">
+            <h3>Laporan Rinci Tambak</h3>
+            <p id="detail-teks"></p>
+        </div>
+
+        <div id="daftar-tambak" aria-live="polite" class="cards">
+        </div>
     </section>
 
     <section id="ringkasan-fitur">
