@@ -6,18 +6,35 @@
     <meta name="description" content="SiJaga Tambak - Sistem monitoring kesehatan tambak udang-bandeng berbasis web">
     <title>SiJaga Tambak - Monitoring Kesehatan Tambak</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tambahan gaya untuk fitur Modul 5 */
+        .toolbar { margin-bottom: 1rem; padding: 1rem; background: #f4f4f4; border-radius: 5px; }
+        .form-catat { background: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+        .form-catat form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .form-catat input { padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        .form-catat button { padding: 6px 12px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .form-catat button:hover { background: #218838; }
+        
+        .card { padding: 15px; margin-bottom: 10px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .card-waspada { border: 2px solid #dc3545; }
+        .card-normal { border: 1px solid #28a745; }
+        #detail-area { display: none; margin-bottom: 1rem; padding: 15px; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px; }
+        
+        button.btn-detail { cursor: pointer; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; margin-top: 10px; }
+        button.btn-detail:hover { background-color: #0056b3; }
+    </style>
 </head>
 <body>
 
     <header>
-    <a href="#main">Lewati ke konten utama</a>
-    <h1>SiJaga Tambak</h1>
-    <nav aria-label="Navigasi utama">
-        <a href="#tentang">Tentang</a>
-        <a href="#fitur">Fitur</a>
-        <a href="#pemantauan">Pemantauan</a>
-        <a href="#cara-kerja">Cara Kerja</a>
-        <a href="#kontak">Kontak</a>
+        <a href="#main">Lewati ke konten utama</a>
+        <h1>SiJaga Tambak</h1>
+        <nav aria-label="Navigasi utama">
+            <a href="#tentang">Tentang</a>
+            <a href="#fitur">Fitur</a>
+            <a href="#pemantauan">Pemantauan</a>
+            <a href="#cara-kerja">Cara Kerja</a>
+            <a href="#kontak">Kontak</a>
         </nav>
     </header>
 
@@ -30,106 +47,123 @@
 
     <main id="main">
 
-    <section id="tentang">
-        <h2>Tentang SiJaga Tambak</h2>
-        <p>
-            SiJaga Tambak adalah sistem monitoring kesehatan tambak udang dan bandeng
-            berbasis web, yang membantu penjaga tambak dan pemilik tambak memantau
-            kondisi kolam melalui pencatatan konsumsi pakan harian.
-        </p>
-    </section>
+        <section id="tentang">
+            <h2>Tentang SiJaga Tambak</h2>
+            <p>
+                SiJaga Tambak adalah sistem monitoring kesehatan tambak udang dan bandeng
+                berbasis web, yang membantu penjaga tambak dan pemilik tambak memantau
+                kondisi kolam melalui pencatatan konsumsi pakan harian.
+            </p>
+        </section>
 
-    <section id="fitur">
-        <h2>Fitur Utama</h2>
-        <article>
-        <h3>Deteksi Dini Penyakit</h3>
-        <p>
-            Sistem menghitung persentase pakan yang dimakan setiap hari.
-            Jika terjadi penurunan signifikan dibanding hari-hari sebelumnya,
-            sistem akan mengirim notifikasi peringatan kepada pemilik tambak,
-            sehingga penanganan bisa dilakukan lebih cepat.
-        </p>
-        </article>
-    </section>
+        <section id="fitur">
+            <h2>Fitur Utama</h2>
+            <article>
+                <h3>Deteksi Dini Penyakit</h3>
+                <p>
+                    Sistem menghitung persentase pakan yang dimakan setiap hari.
+                    Jika terjadi penurunan signifikan dibanding hari-hari sebelumnya,
+                    sistem akan mengirim notifikasi peringatan kepada pemilik tambak,
+                    sehingga penanganan bisa dilakukan lebih cepat.
+                </p>
+            </article>
+        </section>
 
-    <section id="pemantauan">
-        <h2>Data Pemantauan Harian</h2>
-        
-        <div class="toolbar" aria-label="Filter Data Tambak" style="margin-bottom: 1rem; padding: 1rem; background: #f4f4f4; border-radius: 5px;">
-            <label for="search">Cari Status/Tanggal:</label>
-            <input id="search" type="search" placeholder="Ketik 'Waspada' atau tanggal...">
+        <!-- FITUR UTAMA TUGAS OBE MODUL 5 -->
+        <section id="pemantauan">
+            <h2>Data Pemantauan Harian</h2>
+            
+            <!-- 1. Toolbar Pencarian & Limit -->
+            <div class="toolbar" aria-label="Filter Data Tambak">
+                <label for="search">Cari Status/Tanggal:</label>
+                <input id="search" type="search" placeholder="Ketik 'Waspada' atau tanggal...">
 
-            <label for="limit" style="margin-left: 1rem;">Tampilkan:</label>
-            <select id="limit">
-                <option value="2">2 Hari</option>
-                <option value="4">4 Hari</option>
-                <option value="6">6 Hari</option>
-            </select>
-        </div>
-
-        <div id="detail-area" style="display: none; margin-bottom: 1rem; padding: 1rem; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px;">
-            <h3>Laporan Rinci Tambak</h3>
-            <p id="detail-teks"></p>
-        </div>
-
-        <div id="daftar-tambak" aria-live="polite" class="cards">
-        </div>
-    </section>
-
-    <section id="ringkasan-fitur">
-        <h2>Ringkasan Fitur</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Deteksi Dini</h3>
-                <p>Notifikasi otomatis saat konsumsi pakan menurun signifikan.</p>
+                <label for="limit" style="margin-left: 1rem;">Tampilkan:</label>
+                <select id="limit">
+                    <option value="2">2 Hari</option>
+                    <option value="4">4 Hari</option>
+                    <option value="6">6 Hari</option>
+                    <option value="10">10 Hari</option>
+                </select>
             </div>
-            <div class="card">
-                <h3>Dashboard &amp; Grafik</h3>
-                <p>Pantau tren konsumsi pakan dari waktu ke waktu.</p>
+
+            <!-- 2. Form Input Data Baru (Eksklusif Tugas OBE) -->
+            <div class="form-catat">
+                <h3 style="margin-top: 0;">Catat Data Pakan Hari Ini</h3>
+                <form id="form-tambah-data">
+                    <input type="date" id="input-tanggal" required aria-label="Tanggal Pencatatan">
+                    <input type="number" id="input-diberi" placeholder="Pakan Diberikan (kg)" min="1" required aria-label="Pakan Diberikan">
+                    <input type="number" id="input-sisa" placeholder="Sisa Pakan (kg)" min="0" required aria-label="Sisa Pakan">
+                    <button type="submit">Simpan Catatan</button>
+                </form>
             </div>
-            <div class="card">
-                <h3>Info Penyakit</h3>
-                <p>Kenali gejala dan penanganan penyakit umum tambak.</p>
+
+            <div id="detail-area">
+                <h3>Laporan Rinci Tambak</h3>
+                <p id="detail-teks"></p>
             </div>
-        </div>
-    </section>
 
-    <section id="cara-kerja">
-        <h2>Cara Kerja</h2>
-        <ol>
-            <li>Penjaga tambak mencatat jumlah pakan yang diberikan setiap hari.</li>
-            <li>Penjaga tambak mencatat sisa pakan yang tidak dimakan.</li>
-            <li>Sistem menghitung otomatis persentase pakan yang dimakan.</li>
-            <li>Sistem membandingkan dengan rata-rata hari-hari sebelumnya.</li>
-            <li>Jika terjadi penurunan signifikan, sistem mengirim notifikasi ke pemilik tambak.</li>
-        </ol>
-    </section>
+            <!-- 4. Container Daftar Dinamis -->
+            <div id="daftar-tambak" aria-live="polite">
+                <!-- Card data tambak akan di-render di sini oleh JavaScript -->
+            </div>
+        </section>
 
-    <section id="kontak">
-        <h2>Kontak &amp; Masukan</h2>
-        <form>
-            <label for="nama">Nama</label>
-            <input id="nama" name="nama" type="text" required>
+        <section id="ringkasan-fitur">
+            <h2>Ringkasan Fitur</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Deteksi Dini</h3>
+                    <p>Notifikasi otomatis saat konsumsi pakan menurun signifikan.</p>
+                </div>
+                <div class="card">
+                    <h3>Dashboard &amp; Grafik</h3>
+                    <p>Pantau tren konsumsi pakan dari waktu ke waktu.</p>
+                </div>
+                <div class="card">
+                    <h3>Info Penyakit</h3>
+                    <p>Kenali gejala dan penanganan penyakit umum tambak.</p>
+                </div>
+            </div>
+        </section>
 
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
+        <section id="cara-kerja">
+            <h2>Cara Kerja</h2>
+            <ol>
+                <li>Penjaga tambak mencatat jumlah pakan yang diberikan setiap hari.</li>
+                <li>Penjaga tambak mencatat sisa pakan yang tidak dimakan.</li>
+                <li>Sistem menghitung otomatis persentase pakan yang dimakan.</li>
+                <li>Sistem membandingkan dengan rata-rata hari-hari sebelumnya.</li>
+                <li>Jika terjadi penurunan signifikan, sistem mengirim notifikasi ke pemilik tambak.</li>
+            </ol>
+        </section>
 
-        <label for="pesan">Pesan atau Masukan</label>
-        <textarea id="pesan" name="pesan" rows="4" required></textarea>
+        <section id="kontak">
+            <h2>Kontak &amp; Masukan</h2>
+            <form>
+                <label for="nama">Nama</label>
+                <input id="nama" name="nama" type="text" required>
 
-        <button type="submit">Kirim</button>
-        </form>
-    </section>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required>
+
+                <label for="pesan">Pesan atau Masukan</label>
+                <textarea id="pesan" name="pesan" rows="4" required></textarea>
+
+                <button type="submit">Kirim</button>
+            </form>
+        </section>
 
     </main>
 
     <footer>
-    <p>&copy; 2026 SiJaga Tambak</p>
-    <p>
-        Hubungi kami lewat
-        <a href="https://wa.me/6282350125251">WhatsApp Penjaga Tambak</a>
-    </p>
+        <p>&copy; 2026 SiJaga Tambak</p>
+        <p>
+            Hubungi kami lewat
+            <a href="https://wa.me/6282350125251">WhatsApp Penjaga Tambak</a>
+        </p>
     </footer>
+    
     <script type="module" src="js/app.js"></script>
 </body>
 </html>

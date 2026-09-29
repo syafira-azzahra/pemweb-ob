@@ -1,7 +1,9 @@
+// Memisahkan fungsi logika sesuai standar ES Modules
 export const hitungKonsumsiPakan = (diberikan, sisa) => {
     if (typeof diberikan !== 'number' || typeof sisa !== 'number') {
         throw new TypeError('Error: Data pakan harus berupa angka.');
     }
+    // Validasi Edge Case (Error Handling)
     if (sisa > diberikan || sisa < 0) {
         throw new Error('Error Edge Case: Sisa pakan tidak valid (lebih besar dari yang diberikan atau negatif).');
     }
