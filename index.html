@@ -7,21 +7,33 @@
     <title>SiJaga Tambak - Monitoring Kesehatan Tambak</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Tambahan gaya untuk fitur Modul 5 */
+        /* Gaya untuk Hero Image */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg-tambak.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Gaya untuk Form Modul 6 dan UI lainnya */
         .toolbar { margin-bottom: 1rem; padding: 1rem; background: #f4f4f4; border-radius: 5px; }
-        .form-catat { background: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
-        .form-catat form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-        .form-catat input { padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
-        .form-catat button { padding: 6px 12px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        .form-catat button:hover { background: #218838; }
-        
+        .form-catat { background: #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; display: flex; flex-direction: column; }
+        .form-group label { font-weight: bold; margin-bottom: 4px; font-size: 14px; }
+        .form-group input, .form-group select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .form-group input.input-error, .form-group select.input-error { border-color: #dc3545; background-color: #fff8f8; }
+        .error-text { color: #dc3545; font-size: 12px; margin-top: 4px; display: none; }
+        .error-summary { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; display: none; border: 1px solid #f5c6cb; }
+
         .card { padding: 15px; margin-bottom: 10px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .card-waspada { border: 2px solid #dc3545; }
         .card-normal { border: 1px solid #28a745; }
         #detail-area { display: none; margin-bottom: 1rem; padding: 15px; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px; }
-        
+        button.btn-submit { padding: 10px 16px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button.btn-submit:hover { background: #218838; }
         button.btn-detail { cursor: pointer; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; margin-top: 10px; }
-        button.btn-detail:hover { background-color: #0056b3; }
     </style>
 </head>
 <body>
@@ -31,13 +43,14 @@
         <h1>SiJaga Tambak</h1>
         <nav aria-label="Navigasi utama">
             <a href="#tentang">Tentang</a>
-            <a href="#fitur">Fitur</a>
+
             <a href="#pemantauan">Pemantauan</a>
             <a href="#cara-kerja">Cara Kerja</a>
             <a href="#kontak">Kontak</a>
         </nav>
     </header>
 
+    <!-- Bagian Hero dengan Background Image -->
     <section class="hero">
         <div class="hero-text">
             <h2>Pantau Kesehatan Tambak Lebih Dini</h2>
@@ -46,7 +59,6 @@
     </section>
 
     <main id="main">
-
         <section id="tentang">
             <h2>Tentang SiJaga Tambak</h2>
             <p>
@@ -56,24 +68,10 @@
             </p>
         </section>
 
-        <section id="fitur">
-            <h2>Fitur Utama</h2>
-            <article>
-                <h3>Deteksi Dini Penyakit</h3>
-                <p>
-                    Sistem menghitung persentase pakan yang dimakan setiap hari.
-                    Jika terjadi penurunan signifikan dibanding hari-hari sebelumnya,
-                    sistem akan mengirim notifikasi peringatan kepada pemilik tambak,
-                    sehingga penanganan bisa dilakukan lebih cepat.
-                </p>
-            </article>
-        </section>
-
-        <!-- FITUR UTAMA TUGAS OBE MODUL 5 -->
+        <!-- FITUR UTAMA PERTEMUAN 6: FORM & VALIDASI -->
         <section id="pemantauan">
             <h2>Data Pemantauan Harian</h2>
             
-            <!-- 1. Toolbar Pencarian & Limit -->
             <div class="toolbar" aria-label="Filter Data Tambak">
                 <label for="search">Cari Status/Tanggal:</label>
                 <input id="search" type="search" placeholder="Ketik 'Waspada' atau tanggal...">
@@ -87,14 +85,52 @@
                 </select>
             </div>
 
-            <!-- 2. Form Input Data Baru (Eksklusif Tugas OBE) -->
+            <!-- Form Pencatatan dengan Aksesibilitas dan Validasi -->
             <div class="form-catat">
-                <h3 style="margin-top: 0;">Catat Data Pakan Hari Ini</h3>
-                <form id="form-tambah-data">
-                    <input type="date" id="input-tanggal" required aria-label="Tanggal Pencatatan">
-                    <input type="number" id="input-diberi" placeholder="Pakan Diberikan (kg)" min="1" required aria-label="Pakan Diberikan">
-                    <input type="number" id="input-sisa" placeholder="Sisa Pakan (kg)" min="0" required aria-label="Sisa Pakan">
-                    <button type="submit">Simpan Catatan</button>
+                <h3 style="margin-top: 0;">Catat Data Pakan & Kondisi Kolam</h3>
+                <!-- Error Summary di atas form -->
+                <div id="errorSummary" class="error-summary" aria-live="polite">
+                    <strong>Perhatian:</strong> Mohon periksa kembali input yang bermasalah di bawah.
+                </div>
+
+                <form id="formTambahData" novalidate>
+                    
+                    <div class="form-group">
+                        <label for="inputTanggal">Tanggal Pencatatan *</label>
+                        <input type="date" id="inputTanggal" name="tanggal" required aria-describedby="errorTanggal">
+                        <small id="errorTanggal" class="error-text" aria-live="polite"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDiberi">Pakan Diberikan (kg) *</label>
+                        <input type="number" id="inputDiberi" name="pakanDiberi" min="1" placeholder="Contoh: 50" required aria-describedby="errorDiberi">
+                        <small id="errorDiberi" class="error-text" aria-live="polite"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputSisa">Sisa Pakan (kg) *</label>
+                        <input type="number" id="inputSisa" name="pakanSisa" min="0" placeholder="Contoh: 5" required aria-describedby="errorSisa">
+                        <small id="errorSisa" class="error-text" aria-live="polite"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputKategori">Kategori Kolam *</label>
+                        <select id="inputKategori" name="kategori" required aria-describedby="errorKategori">
+                            <option value="">-- Pilih Kolam Tambak --</option>
+                            <option value="Kolam A - Udang Vaname">Kolam A - Udang Vaname</option>
+                            <option value="Kolam B - Ikan Bandeng">Kolam B - Ikan Bandeng</option>
+                            <option value="Kolam C - Campuran">Kolam C - Campuran</option>
+                        </select>
+                        <small id="errorKategori" class="error-text" aria-live="polite"></small>
+                    </div>
+
+<!-- Field 5: Checkbox Persetujuan -->
+                    <div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; margin-bottom: 5px;">
+                        <input type="checkbox" id="inputSetuju" name="setuju" required aria-describedby="errorSetuju" style="width: auto; margin: 0; cursor: pointer;">
+                        <label for="inputSetuju" style="margin: 0; font-weight: normal; cursor: pointer;">Saya menyatakan data yang diisi sudah benar dan sesuai kondisi lapangan *</label>
+                    </div>
+                    <small id="errorSetuju" class="error-text" aria-live="polite" style="display: block; margin-bottom: 15px;"></small>
+                    <button type="submit" class="btn-submit">Simpan & Validasi Catatan</button>
                 </form>
             </div>
 
@@ -103,12 +139,12 @@
                 <p id="detail-teks"></p>
             </div>
 
-            <!-- 4. Container Daftar Dinamis -->
             <div id="daftar-tambak" aria-live="polite">
-                <!-- Card data tambak akan di-render di sini oleh JavaScript -->
+                <!-- Card data tambak akan dirender di sini -->
             </div>
         </section>
 
+        <!-- BAGIAN BAWAH YANG SEMPAT HILANG DIKEMBALIKAN -->
         <section id="ringkasan-fitur">
             <h2>Ringkasan Fitur</h2>
             <div class="cards">
