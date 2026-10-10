@@ -1,33 +1,23 @@
 # SiJaga Tambak - Sistem Monitoring Kesehatan Tambak
 
-Proyek ini dikembangkan untuk memenuhi tugas mata kuliah **Pemrograman Web** (Modul 05: DOM, Event, Web Storage, dan Dynamic UI). SiJaga Tambak adalah aplikasi web untuk memantau kesehatan udang dan bandeng melalui pencatatan konsumsi pakan harian guna mendeteksi penyakit secara dini.
+Proyek ini dikembangkan untuk memenuhi tugas mata kuliah **Pemrograman Web** (Tugas OBE Pertemuan 6: Form, Validasi, Accessibility & Input Handling)[cite: 55].
 
-## Fitur Interaktif Modul 5
-1. **Render DOM Aman & Dinamis**: Menerjemahkan data *array* menjadi kartu informasi (*card*) secara otomatis tanpa menggunakan teknik `innerHTML` yang berisiko, melainkan menggunakan `createElement` dan `textContent`.
-2. **Pencarian Real-Time (Event Input)**: Menyaring status kolam ("Waspada" atau "Normal") dan tanggal pencatatan secara instan saat pengguna mengetik di kolom pencarian.
-3. **Event Delegation untuk Tombol Detail**: Memasang *listener* secara efisien pada kontainer utama untuk memunculkan kotak laporan rinci sisa pakan saat tombol "Cek Detail" ditekan.
-4. **Web Storage (Local Storage)**: Menyimpan preferensi batas jumlah hari/data yang ingin ditampilkan oleh pengguna (`limitTambak`), sehingga pengaturan tetap tersimpan meskipun halaman dimuat ulang (*reload*).
-5. **Form Pencatatan Harian (Event Submit)**: Memungkinkan pengguna memasukkan data baru secara interaktif, yang langsung divalidasi dan dirender ulang ke layar seketika.
+## Deskripsi Form
+Form utama yang ditambahkan adalah **Form Pencatatan Harian Pakan & Kondisi Kolam**[cite: 49]. Form ini bertujuan untuk mengumpulkan data harian dari penjaga tambak secara valid dan konsisten sebelum diproses oleh sistem ke dalam bentuk riwayat pakan.
 
-## Teknologi yang Digunakan
-- HTML5 Semantik
-- CSS3 (Flexbox & Grid)
-- JavaScript Modern (ES Modules)
-- Laragon 5 (Local Server)
-- Git & GitHub (Version Control)
+## Catatan Aksesibilitas (Accessibility)
+Form ini telah dirancang agar ramah terhadap pengguna dan teknologi bantu (*screen reader*)[cite: 49]:
+- Atribut `novalidate` digunakan pada tag `<form>` untuk mengambil alih kontrol validasi dari browser agar pesan error dapat dikustomisasi[cite: 37].
+- Setiap input memiliki tag `<label>` yang terhubung secara eksplisit melalui atribut `for` dan `id`[cite: 37].
+- Pesan error dihubungkan secara semantik dengan input menggunakan atribut `aria-describedby`[cite: 37].
+- Elemen dinamis seperti *Error Summary* dan pesan error individual menggunakan atribut `aria-live="polite"` agar perubahannya dibacakan otomatis oleh *screen reader* tanpa mengganggu pengguna[cite: 37].
 
----
+## Catatan Peer Review
+Berdasarkan pengujian dan ulasan dari rekan (*peer review*), berikut adalah temuan dan perbaikan yang telah dilakukan[cite: 51]:
+1. **Temuan 1:** Form sebelumnya belum ramah *keyboard* dan *screen reader*, pengguna kebingungan mencari letak kesalahan jika form gagal disubmit[cite: 51].
+   **Perbaikan 1:** Menambahkan atribut `aria-describedby`, menampilkan *Error Summary* di bagian atas form, dan membuat skrip JavaScript untuk otomatis memfokuskan kursor (`focus()`) ke *field* pertama yang mengalami error[cite: 51].
+2. **Temuan 2:** Validasi error bawaan browser atau penggunaan `alert()` kurang spesifik, tidak informatif, dan mengganggu UX[cite: 51].
+   **Perbaikan 2:** Menghapus penggunaan `alert()` sebagai feedback tunggal. Menggantinya dengan validasi *client-side* berbasis JavaScript yang memunculkan teks pesan error spesifik dan outline merah tepat di masing-masing *field* input yang bermasalah[cite: 51].
 
-## Refleksi Mahasiswa
-
-* **Konsep apa yang dipahami?**
-  Saya memahami bagaimana *Document Object Model* (DOM) bertindak sebagai jembatan hidup antara struktur HTML statis dan logika pemrograman JavaScript, sehingga halaman web dapat merespons tindakan pengguna secara *real-time*[cite: 6]. Saya juga memahami pentingnya mengamankan DOM dari kerentanan injeksi data menggunakan elemen eksplisit (`createElement` dan `textContent`), serta efisiensi penerapan *Event Delegation* dan pemanfaatan `localStorage` untuk menyimpan preferensi non-sensitif di sisi *browser*[cite: 6].
-
-* **Masalah apa yang ditemukan dan bagaimana penyelesaiannya?**
-  Tantangan utama yang saya temukan adalah menjaga agar tata letak elemen antarmuka (*layout*) proyek utama tidak berantakan saat menyisipkan elemen dinamis baru. Selain itu, saya sempat mengalami kendala logika saat menggabungkan fitur pembatas jumlah data (`slice`) dengan fitur pencarian teks (`filter`). Masalah ini diselesaikan dengan memastikan proses pemotongan batas data dijalankan terlebih dahulu sebelum array disaring berdasarkan kata kunci masukan pengguna.
-
-* **Bukti apa yang menunjukkan hasil sudah benar?**
-  Kebenaran fungsionalitas dibuktikan melalui antarmuka web yang merespons secara aktif: kolom pencarian menyaring kartu seketika tanpa *reload*, tombol detail memunculkan rincian pakan dengan akurat, *dropdown* batas data tersimpan secara persisten di tab *Local Storage* DevTools, dan form pencatatan berhasil menyuntikkan data baru ke layar[cite: 6].
-
-* **Jika menggunakan AI, bagian apa yang dibantu dan bagaimana verifikasinya?**
-  AI digunakan sebagai mitra diskusi untuk merapikan struktur logika validasi *error handling* (`try...catch`) pada perhitungan pakan serta menyelaraskan pola *event delegation* yang aman. Proses verifikasi dilakukan secara mandiri dengan menguji langsung kode melalui *local server* Laragon di `localhost/pemweb-obe/`, memeriksa tab *Console* dari potensi pesan *error*, serta menguji berbagai skenario masukan (*edge cases*) secara langsung di *browser*[cite: 6].
+## Refleksi Singkat
+Melalui tugas Pertemuan 6 ini, saya menyadari bahwa form bukan sekadar elemen untuk mengumpulkan data, melainkan gerbang utama interaksi pengguna yang harus memberikan panduan jelas[cite: 56]. Saya belajar mengimplementasikan HTML form yang aksesibel, melakukan proses *input handling* seperti normalisasi spasi menggunakan `.trim()`, serta merancang 5 aturan validasi *client-side* berbasis JavaScript[cite: 55]. Tantangan utama adalah memanipulasi DOM untuk menampilkan pesan error spesifik tepat di dekat *field* yang salah tanpa merusak tata letak form secara keseluruhan. Dengan praktik pencegahan error di sisi klien ini, saya menjadi lebih siap untuk menghubungkan data form dengan *backend*/API di pertemuan selanjutnya[cite: 56].

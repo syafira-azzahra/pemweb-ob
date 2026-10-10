@@ -43,14 +43,13 @@
         <h1>SiJaga Tambak</h1>
         <nav aria-label="Navigasi utama">
             <a href="#tentang">Tentang</a>
-
+            <a href="#fitur">Fitur</a>
             <a href="#pemantauan">Pemantauan</a>
             <a href="#cara-kerja">Cara Kerja</a>
             <a href="#kontak">Kontak</a>
         </nav>
     </header>
 
-    <!-- Bagian Hero dengan Background Image -->
     <section class="hero">
         <div class="hero-text">
             <h2>Pantau Kesehatan Tambak Lebih Dini</h2>
@@ -68,14 +67,12 @@
             </p>
         </section>
 
-        <!-- FITUR UTAMA PERTEMUAN 6: FORM & VALIDASI -->
         <section id="pemantauan">
             <h2>Data Pemantauan Harian</h2>
             
             <div class="toolbar" aria-label="Filter Data Tambak">
                 <label for="search">Cari Status/Tanggal:</label>
                 <input id="search" type="search" placeholder="Ketik 'Waspada' atau tanggal...">
-
                 <label for="limit" style="margin-left: 1rem;">Tampilkan:</label>
                 <select id="limit">
                     <option value="2">2 Hari</option>
@@ -88,7 +85,7 @@
             <!-- Form Pencatatan dengan Aksesibilitas dan Validasi -->
             <div class="form-catat">
                 <h3 style="margin-top: 0;">Catat Data Pakan & Kondisi Kolam</h3>
-                <!-- Error Summary di atas form -->
+                
                 <div id="errorSummary" class="error-summary" aria-live="polite">
                     <strong>Perhatian:</strong> Mohon periksa kembali input yang bermasalah di bawah.
                 </div>
@@ -124,12 +121,13 @@
                         <small id="errorKategori" class="error-text" aria-live="polite"></small>
                     </div>
 
-<!-- Field 5: Checkbox Persetujuan -->
+                    <!-- Perbaikan Checkbox agar rapi berdampingan -->
                     <div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; margin-bottom: 5px;">
                         <input type="checkbox" id="inputSetuju" name="setuju" required aria-describedby="errorSetuju" style="width: auto; margin: 0; cursor: pointer;">
                         <label for="inputSetuju" style="margin: 0; font-weight: normal; cursor: pointer;">Saya menyatakan data yang diisi sudah benar dan sesuai kondisi lapangan *</label>
                     </div>
                     <small id="errorSetuju" class="error-text" aria-live="polite" style="display: block; margin-bottom: 15px;"></small>
+
                     <button type="submit" class="btn-submit">Simpan & Validasi Catatan</button>
                 </form>
             </div>
@@ -144,7 +142,6 @@
             </div>
         </section>
 
-        <!-- BAGIAN BAWAH YANG SEMPAT HILANG DIKEMBALIKAN -->
         <section id="ringkasan-fitur">
             <h2>Ringkasan Fitur</h2>
             <div class="cards">
@@ -179,25 +176,18 @@
             <form>
                 <label for="nama">Nama</label>
                 <input id="nama" name="nama" type="text" required>
-
                 <label for="email">Email</label>
                 <input id="email" name="email" type="email" required>
-
                 <label for="pesan">Pesan atau Masukan</label>
                 <textarea id="pesan" name="pesan" rows="4" required></textarea>
-
                 <button type="submit">Kirim</button>
             </form>
         </section>
-
     </main>
 
     <footer>
         <p>&copy; 2026 SiJaga Tambak</p>
-        <p>
-            Hubungi kami lewat
-            <a href="https://wa.me/6282350125251">WhatsApp Penjaga Tambak</a>
-        </p>
+        <p>Hubungi kami lewat <a href="https://wa.me/6282350125251">WhatsApp Penjaga Tambak</a></p>
     </footer>
     
     <script type="module" src="js/app.js"></script>
