@@ -1,9 +1,11 @@
 # Catatan Penggunaan AI (AI Usage Log)
 
-Selama pengembangan proyek SiJaga Tambak (khususnya pada pengerjaan Modul 3: CSS Modern & Responsive Design), saya menggunakan bantuan AI (Gemini) sebagai asisten virtual. Berikut rinciannya:
+Dalam pengerjaan tugas Pertemuan 6 (Form, Validasi & Accessibility), saya memanfaatkan bantuan AI (*Generative AI*) dengan rincian sebagai berikut[cite: 55]:
 
-| Tanggal | Kendala / Permintaan | Bantuan yang Diberikan AI | Verifikasi & Modifikasi Saya |
-| :--- | :--- | :--- | :--- |
-| 15 Sep 2026 | *Syntax error* pada CSS dan gambar HTML terpotong. | Menemukan tag penutup komentar `*/` yang hilang di CSS dan melengkapi tag `<img src="...">` di HTML. | Saya mengecek ulang baris 58 di `styles.css` dan section `#fitur` di HTML, lalu menerapkan perbaikan tersebut dan memastikan halaman berjalan normal di `localhost`. |
-| 15 Sep 2026 | Teks hero section menyatu dengan *background* (tidak terbaca) dan *font* kurang menarik. | Menyarankan penggunaan Google Fonts 'Poppins' dan menambahkan `text-shadow` serta mengubah warna *overlay* pada latar belakang. | Saya menyalin kode yang diberikan, memastikan keterbacaan kontras visual menjadi jauh lebih baik di semua ukuran layar, dan menambahkan elemen tersebut ke proyek. |
-| 15 Sep 2026 | Masalah identitas tidak dikenal saat melakukan `git commit` di terminal lokal. | Memberikan panduan perintah `git config --global user.name` dan `user.email` untuk mengatur identitas Git lokal. | Saya menjalankan perintah tersebut di terminal VS Code menggunakan nama dan email saya sendiri, sehingga `commit` dan `push` berhasil dieksekusi. |
+- **Tujuan Penggunaan:** 
+  Mencari solusi tata letak CSS (*flexbox*) agar elemen *checkbox* dan label persetujuan bisa berdampingan dengan rapi di antarmuka web, serta merapikan struktur fungsi validasi JavaScript agar mengembalikan objek *error* yang bersih.
+- **Prompt/Perintah Utama:** 
+  1. "Bantu perbaiki tata letak *checkbox* yang jaraknya terlalu jauh dengan labelnya menggunakan flexbox."
+  2. "Bantu buatkan struktur fungsi validasi 5 aturan (*client-side*) yang aman dan merender pesan error ke DOM."
+- **Verifikasi dan Tindak Lanjut:** 
+  Kode yang diberikan oleh AI tidak disalin secara mentah. Saya menganalisis penamaan variabelnya agar sesuai dengan studi kasus "SiJaga Tambak", lalu mengujinya secara langsung menggunakan *local server* Laragon (`localhost`). Semua skenario gagal (*error state*) dan sukses diuji coba secara manual di *browser* untuk memastikan fungsionalitasnya benar-benar sesuai dengan instruksi dan rubrik penilaian OBE[cite: 54].
