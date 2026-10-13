@@ -67,6 +67,7 @@
             </p>
         </section>
 
+        <!-- FITUR LAMA: PENCATATAN MANUAL -->
         <section id="pemantauan">
             <h2>Data Pemantauan Harian</h2>
             
@@ -139,6 +140,32 @@
 
             <div id="daftar-tambak" aria-live="polite">
                 <!-- Card data tambak akan dirender di sini -->
+            </div>
+        </section>
+
+        <!-- FITUR BARU PERTEMUAN 7: DASHBOARD API -->
+        <section id="dashboard-api">
+            <h2>Dashboard Kondisi Kualitas Air (Realtime API)</h2>
+            
+            <div class="toolbar" aria-label="Filter Data API">
+                <label for="search-api">Cari Kolam / Status:</label>
+                <input id="search-api" type="search" placeholder="Ketik 'Kritis' atau nama kolam..." style="width: 100%; max-width: 300px; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+            </div>
+
+            <!-- Latihan 3: Loading State -->
+            <div id="loading-api" style="display: none; padding: 15px; background: #e2f3f5; color: #0c5460; border: 1px solid #bee5eb; border-radius: 5px; margin-bottom: 15px; font-style: italic;">
+                ⏳ Memuat data kualitas air dari sensor tambak...
+            </div>
+
+            <!-- Latihan 3: Error State -->
+            <div id="error-box-api" style="display: none; background: #f8d7da; padding: 15px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
+                <p id="error-message-api" style="color: #721c24; margin: 0 0 10px 0; font-weight: bold;"></p>
+                <button id="retry-button-api" class="btn-detail" style="background-color: #dc3545;">Muat Ulang Data</button>
+            </div>
+
+            <!-- Container untuk Render Data API (Grid Card) -->
+            <div id="data-list-api" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;" aria-live="polite">
+                <!-- Kartu data API akan muncul di sini lewat JavaScript -->
             </div>
         </section>
 

@@ -1,0 +1,8 @@
+[
+  { "id": 1, "nama_kolam": "Kolam Alpha", "ph": 7.4, "suhu": 28, "status": "Optimal" },
+  { "id": 2, "nama_kolam": "Kolam Beta", "ph": 6.5, "suhu": 30, "status": "Waspada" },
+  { "id": 3, "nama_kolam": "Kolam Gamma", "ph": 7.8, "suhu": 27, "status": "Optimal" },
+  { "id": 4, "nama_kolam": "Kolam Delta", "ph": 8.1, "suhu": 29, "status": "Kritis" },
+  { "id": 5, "nama_kolam": "Kolam Epsilon", "ph": 7.2, "suhu": 28, "status": "Optimal" },
+  { "id": 6, "nama_kolam": "Kolam Zeta", "ph": 6.9, "suhu": 28, "status": "Optimal" }
+]
