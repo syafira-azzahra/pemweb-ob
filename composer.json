@@ -1,0 +1,12 @@
+{
+    "name": "user/pemweb-obe",
+    "authors": [
+        {
+            "name": "syafira-azzahra",
+            "email": "syfryg2@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.7"
+    }
+}
